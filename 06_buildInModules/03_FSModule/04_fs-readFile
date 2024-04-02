@@ -1,0 +1,26 @@
+// synchronous way of reading file
+
+const fs = require('fs');
+
+try{
+    // Read data from a file synchronously
+    const data = fs.readFileSync('./myfolder/example.txt', 'utf8');
+
+    console.log('Data read from file synchronously:', data);
+}catch (err){
+    // handle errors
+    console.log('Error reading file:', err);
+}
+
+// asynchronous way of reading file
+
+// If the read operation is successful, it returns the data to the callback function and if not, it will return the error occurred
+fs.readFile('./myfolder/myfile.txt', {encoding: 'utf8'}, (err, data) =>{
+    if(err){
+        console.log(err);
+        return;
+    } else {
+        console.log('file read successfully! here is the data');
+        console.log( data);
+    }
+})
